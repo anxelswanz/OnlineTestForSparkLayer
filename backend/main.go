@@ -34,18 +34,18 @@ func ToDoListHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	//1. If the request method is GET
-	if r.Method == "GET" {
+	if (r.Method == "GET") {
 		//1.1 using the Encode Method
 		json.NewEncoder(w).Encode(toDoList)
 		//1.2 Set the status code 200
 		w.WriteHeader(http.StatusOK)
 		return
 		//2. If the request method is POST
-	} else if r.Method == "POST" {
+	} else if (r.Method == "POST") {
 		// 2.1 If there's nothing in the request body, then return bad request
 		// [Explanation]
 		// usually I add @NotNull/@NotEmpty annotation in Java for this validation
-		if r.Body == nil {
+		if (r.Body == nil) {
 			http.Error(w, "Invalid Input", http.StatusBadRequest)
 			return
 		}
